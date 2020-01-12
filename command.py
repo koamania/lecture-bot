@@ -136,9 +136,11 @@ class HelpCommand(Command):
 
     def execute(self):
         return create_result_message('''
-        강의 목록 : course list\n
-        강의 등록 : course add <강의 이름(띄어 쓰기 가능)>
-        강의 삭제 : course delete <강의 번호(목록 조회)>
-        수강 시작 : course start <강의 번호(목록 조회)>
-        수강 종료 : course end <강의 번호(목록 조회)> 
+        동시성 제어는 안되니까 modify 요청은 적당히 눈치봐서...
+         
+        강의 목록 : _*course list*_
+        강의 등록 : _*course add <강의 이름(띄어 쓰기 가능)>*_
+        강의 삭제 : _*course delete <강의 번호(목록 조회)>*_
+        수강 시작 : _*course start <강의 번호(목록 조회)>*_
+        수강 종료 : _*course end <강의 번호(목록 조회)>*_
         ''', '배워서 남주는 봇 도움말', '명령어 목록')
