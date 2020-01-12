@@ -8,8 +8,8 @@ from database import create_connection
 
 
 def create_bot():
-    slack_bot_token = os.environ.get('LECTUREBOT_SLACK_TOKEN') or 'xoxb-4604786155-902074620452-h8ltmLdtht6TaOMtlVNzATVN'
-    slack_api_token = 'xoxp-4604786155-502992257717-902531179184-9d56d2134d127303cde247e26e57a9e7'
+    slack_bot_token = os.environ.get('SLACK_LECTUREBOT_TOKEN')
+    slack_api_token = os.environ.get('SLACK_LECTUREAPI_TOKEN')
     # slack_token = 'xoxb-4604786155-902074620452-h8ltmLdtht6TaOMtlVNzATVN'
     return Bot(slack_bot_token, slack_api_token)
 
