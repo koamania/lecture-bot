@@ -1,5 +1,4 @@
 import json
-import logging
 from time import sleep
 
 import websocket
@@ -33,6 +32,9 @@ class Bot:
                                                       as_user=True)
             except websocket.WebSocketTimeoutException:
                 socket.send(json.dumps({'type': 'ping'}))
+            except websocket.WebSocketConnectionClosedException:
+                print("Connection closed")
+                break
             except Exception as ex:
                 attachments_dict = dict()
                 attachments_dict['pretext'] = '요청 처리 실패'

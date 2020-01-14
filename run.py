@@ -29,6 +29,6 @@ def create_database_scheme():
 
 if __name__ == '__main__':
     create_database_scheme()
-    bot = create_bot()
-
-    bot.run()
+    while True:
+        bot = create_bot()
+        bot.run()
