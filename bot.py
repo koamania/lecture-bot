@@ -17,6 +17,7 @@ class Bot:
     def run(self):
         response = self._botclient.rtm.start()
         socket = websocket.create_connection(response.body['url'])
+        socket.settimeout(60)
         while True:
             # noinspection PyBroadException
             try:
@@ -30,6 +31,8 @@ class Bot:
                     self._botclient.chat.post_message(channel=received_event['channel'], text=None,
                                                       attachments=response_message,
                                                       as_user=True)
+            except websocket.WebSocketTimeoutException:
+                socket.send(json.dumps({'type', 'ping'}))
             except Exception as ex:
                 attachments_dict = dict()
                 attachments_dict['pretext'] = '요청 처리 실패'
@@ -38,7 +41,7 @@ class Bot:
                                            '\n 그래도 오류나면 dhlee한테 말걸지 마세요'
                 attachments_dict['mrkdwn_in'] = ['text', 'pretext']
                 attachments_dict['color'] = '#ff0000'
-                # logging.exception('execute command exception occured')
+                # logging.exception('execute command exception occurred')
                 self._botclient.chat.post_message(channel=received_event['channel'], text=None,
                                                   attachments=[attachments_dict],
                                                   as_user=True)
