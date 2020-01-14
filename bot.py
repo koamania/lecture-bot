@@ -32,7 +32,7 @@ class Bot:
                                                       attachments=response_message,
                                                       as_user=True)
             except websocket.WebSocketTimeoutException:
-                socket.send(json.dumps({'type', 'ping'}))
+                socket.send(json.dumps({'type': 'ping'}))
             except Exception as ex:
                 attachments_dict = dict()
                 attachments_dict['pretext'] = '요청 처리 실패'
