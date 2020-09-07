@@ -31,4 +31,7 @@ if __name__ == '__main__':
     create_database_scheme()
     while True:
         bot = create_bot()
-        bot.run()
+        try:
+            bot.run()
+        except:
+            pass
